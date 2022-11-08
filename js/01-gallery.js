@@ -33,8 +33,6 @@ gallery.addEventListener("click", (event) => {
     return;
   }
 
-  // const selectedImg = event.target.getAttribute("data-source");
-
   const instance = basicLightbox.create(`
       <img src="${event.target.dataset.source}" alt="${event.target.alt}">
   `);
@@ -43,7 +41,6 @@ gallery.addEventListener("click", (event) => {
 
   gallery.addEventListener("keydown", closeImg);
 });
-
 
 
 // const elements = [];
