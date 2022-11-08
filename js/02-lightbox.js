@@ -4,23 +4,22 @@ import { galleryItems } from "./gallery-items.js";
 console.log(galleryItems);
 
 const gallery = document.querySelector(".gallery");
-const elements = [];
 
-galleryItems.forEach((el) => {
-  const galleryItem = document.createElement("a");
-  galleryItem.className = "gallery__item";
-  galleryItem.href = el.original;
-  const galleryImg = document.createElement("img");
-  galleryImg.className = "gallery__image";
-  galleryImg.src = el.preview;
-  galleryImg.alt = el.description;
-  galleryImg.setAttribute("title", el.description);
+const galleryItem = () => {
+  const elements = galleryItems.map((el) => 
+  `<a class="gallery__item" href="${el.original}">
+  <img 
+  class="gallery__image"
+  src="${el.preview}"
+  title="${el.description}"
+  alt="${el.description}"/>
+  </a>
+  `).join('');
+  gallery.innerHTML = elements;
+};
 
-  galleryItem.append(galleryImg);
-  elements.push(galleryItem);
-});
+galleryItem();
 
-gallery.append(...elements);
 
 new SimpleLightbox(".gallery a", {
   captionDelay: 250,
